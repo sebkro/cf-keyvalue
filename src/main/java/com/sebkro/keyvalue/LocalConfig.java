@@ -8,6 +8,7 @@ import com.sebkro.keyvalue.service.KeyValueService;
 import com.sebkro.keyvalue.service.LocalKeyValueService;
 
 @Configuration
+@Profile("local")
 public class LocalConfig {
 	
 	@Bean
