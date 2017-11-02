@@ -9,3 +9,4 @@ applications:
   services:
    - keyvalue-redisstore
    - keyvalue-config-server
+   - keyvalue-service-registry
