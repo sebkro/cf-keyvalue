@@ -2,6 +2,8 @@ package com.sebkro.keyvalue;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +14,11 @@ import com.sebkro.keyvalue.service.KeyValueService;
 import com.sebkro.keyvalue.service.LocalKeyValueService;
 
 @RestController
+@RefreshScope
 public class KeyValueController {
+	
+	@Value("${info.value:no value}")
+	private String special;
 	
 	Logger logger = Logger.getLogger(LocalKeyValueService.class);
 	
@@ -30,5 +36,13 @@ public class KeyValueController {
 		logger.info("get value for key " + key);
 		return keyValueService.get(key);
 	}	
+
+	@RequestMapping(method=RequestMethod.GET, produces="application/json", path="configvalue")
+	public String getConfgiValue() {
+		return special;
+	}	
+	
+	
+	
 
 }

@@ -1,0 +1,13 @@
+---
+
+spring:
+  application:
+    name: keyvalue
+
+management:
+  security:
+    enabled: false
+
+security:
+  basic:
+    enabled: false
